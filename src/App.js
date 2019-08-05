@@ -18,14 +18,18 @@ class App extends Component {
         <div className='app'>
             <Tabs>
                 <header className='header'>
-                    <TabList>
+                    <div className="headline">
+                        <h2>Offices</h2>
+                    </div>
+
+                    <TabList className='navigation'>
                         <Tab>List</Tab>
                         <Tab>Grid</Tab>
                         <Tab>Map</Tab>
                     </TabList>
                 </header>
 
-                <TabPanel>
+                <TabPanel className='list-container'>
                     {this.state.offices.map((office) => {
                         return <List
                             key={office.id}

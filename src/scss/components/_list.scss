@@ -1,6 +1,50 @@
 @import '../variables';
 @import '../mixins';
 
-.list {
-
+.list-container {
+  width:98vw;
+  margin:0 auto;
+  background-color:$blue;
+  .list {
+    display:grid;
+    grid-template-columns: 0.1fr 1fr;
+    &:not(:last-child) .list-content {
+      border-bottom:1px solid $darkGreen;
+    }
+    .img-container {
+      @include alignMe(center,center);
+      width:100%;
+      .img {
+        @include alignMe(center, center);
+        width:4rem;
+        height:4rem;
+        border-radius:50%;
+        overflow:hidden;
+        img {
+          height:100%;
+          object-fit: cover;
+        }
+        .no-photo {
+          @include alignMe(center, center);
+          width:4rem;
+          height:4rem;
+          border-radius:50%;
+          background-color:$grey;
+        }
+      }
+    }
+    .list-content {
+      @include alignMe(center, flex-start);
+      flex-direction:column;
+      margin-left:1rem;
+      padding:1.25rem 1.25rem 1.25rem 0;
+      .name {
+        color:$veryLightBlue;
+        margin-bottom:0.15rem;
+      }
+      .desc {
+        color:$darkGreen;
+      }
+    }
+  }
 }

@@ -40,7 +40,7 @@ class App extends Component {
                     })}
                 </TabPanel>
 
-                <TabPanel>
+                <TabPanel className='grid-container'>
                     {this.state.offices.map((office) => {
                         return <Grid
                             key={office.id}

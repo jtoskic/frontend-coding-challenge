@@ -4,6 +4,7 @@
 .grid-container {
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  width:97vw;
   margin:0 auto;
   padding:0.5rem;
   background:$blue;
@@ -29,28 +30,6 @@
     .info {
       p {
         width:90%;
-      }
-    }
-    .img-container {
-      width:100%;
-      @include alignMe(center,center);
-      .img {
-        @include alignMe(center, center);
-        width:4rem;
-        height:4rem;
-        border-radius:50%;
-        overflow:hidden;
-        img {
-          height:100%;
-          object-fit: cover;
-        }
-        .no-photo {
-          @include alignMe(center, center);
-          width:4rem;
-          height:4rem;
-          border-radius:50%;
-          background-color:$grey;
-        }
       }
     }
   }

@@ -10,7 +10,7 @@
   .headline {
     display:flex;
     align-items: center;
-    height:3rem;
+    height:5rem;
     grid-area:headline;
     padding-left:0.5rem;
     h2 {
@@ -19,12 +19,13 @@
   }
   .navigation {
     height:3rem;
+    padding:0;
     grid-area:navigation;
     @include alignMe(space-around, center);
     li {
       @include alignMe(center, center);
       width:30%;
-      height:2.875rem;
+      height:5rem;
       color:$darkWhite;
       list-style-type:none;
       cursor:pointer;
@@ -37,8 +38,8 @@
               'navigation';
       grid-template-columns:1fr;
       .headline {
-        display:block;
-        text-align:center;
+        align-items:center;
+        justify-content:center;
       }
     }
   }

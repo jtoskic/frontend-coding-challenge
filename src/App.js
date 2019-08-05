@@ -40,7 +40,7 @@ class App extends Component {
                             return <List
                                 key={office.id}
                                 name={office.name}
-                                description={office.description}
+                                description={office.description.slice(0, 150)}
                                 photo={office.photo}
                             />
                         })}
@@ -51,20 +51,14 @@ class App extends Component {
                             return <Grid
                                 key={office.id}
                                 name={office.name}
-                                description={office.description}
+                                description={office.description.slice(0, 150)}
                                 photo={office.photo}
                             />
                         })}
                     </TabPanel>
 
-                    <TabPanel>
-                        {this.state.offices.map((office) => {
-                            return <OfficeMap
-                                key={office.id}
-                                lat={office.latitude}
-                                lng={office.longitude}
-                            />
-                        })}
+                    <TabPanel className='map-container'>
+                        <OfficeMap coordinates={this.state.offices}/>
                     </TabPanel>
                 </Tabs>
             }
@@ -92,6 +86,10 @@ class App extends Component {
   isActive = (index) => {
       this.setState({index:index})
   }
+
+//   ab = () => {
+//       this.state.offices
+//   }
 }
 
 const styles = {
@@ -104,5 +102,7 @@ const styles = {
         color:'#a6dce8'
     }
 }
+
+
 
 export default App;

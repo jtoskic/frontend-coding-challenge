@@ -1,15 +1,16 @@
 import React from 'react';
-import { getFirstLetter } from "../Utills/Utility";
+import OfficePhoto from "./OfficePhoto.js";
+
 
 const List = (props) => {
     const { name, description, photo } = props
     return (
         <div className='list'>
-            <div className="img-container">
-                <div className="img">
-                    {photo ? <img src={photo} alt={name}/> : <div className='no-photo'>{getFirstLetter(name)}</div>}
-                </div>
-            </div>
+
+            <OfficePhoto
+                name={name}
+                photo={photo}/>
+
             <div className="list-content">
                 <h3 className='name'>{name}</h3>
                 <p className='desc'>{description}</p>
@@ -17,4 +18,6 @@ const List = (props) => {
         </div>
     )
 }
+
+
 export default List

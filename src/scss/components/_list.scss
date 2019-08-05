@@ -2,36 +2,15 @@
 @import '../mixins';
 
 .list-container {
-  width:98vw;
+  width:97vw;
   margin:0 auto;
+  padding-left:0.5rem;
   background-color:$blue;
   .list {
     display:grid;
     grid-template-columns: 0.1fr 1fr;
     &:not(:last-child) .list-content {
       border-bottom:1px solid $darkGreen;
-    }
-    .img-container {
-      @include alignMe(center,center);
-      width:100%;
-      .img {
-        @include alignMe(center, center);
-        width:4rem;
-        height:4rem;
-        border-radius:50%;
-        overflow:hidden;
-        img {
-          height:100%;
-          object-fit: cover;
-        }
-        .no-photo {
-          @include alignMe(center, center);
-          width:4rem;
-          height:4rem;
-          border-radius:50%;
-          background-color:$grey;
-        }
-      }
     }
     .list-content {
       @include alignMe(center, flex-start);

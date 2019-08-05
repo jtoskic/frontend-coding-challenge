@@ -4,3 +4,10 @@ html, body, p, h1, h2, h3 {
   box-sizing: border-box;
   font-family:'Open Sans', sans-serif;
 }
+
+.loading {
+  width:25rem;
+  position:absolute;
+  transform:translate(-50%, 0);
+  left:50%;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { Popup } from 'react-map-gl';
 import { getFirstLetter } from "../Utills/Utility";
+import OfficeMarker from "./OfficeMarker";
 
 
 const OfficeMap = ({coordinates}) => {
@@ -18,22 +19,10 @@ const OfficeMap = ({coordinates}) => {
                 {...viewport}
                 onViewportChange={viewport => {setViewport(viewport)}}
                 mapStyle="mapbox://styles/tjovan/cjyybvxlx07861doe1u3mbazm"
-                mapboxApiAccessToken={"pk.eyJ1IjoidGpvdmFuIiwiYSI6ImNqeXk5eDczYjE5cWozbW1wcDh2NWdxZngifQ.R9w90fEKjDA8JnuEBDHAYA"}>
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
 
-                { coordinates.map((office) => {
-                    return <Marker
-                            key={office.id}
-                            latitude={parseInt(office.latitude)}
-                            longitude={parseInt(office.longitude)}>
+                <OfficeMarker coordinates={coordinates} setSelectedOffice={setSelectedOffice}/>
 
-                            <div onClick={(e) => {
-                                    e.preventDefault()
-                                    setSelectedOffice(office)
-                                }}>
-                                    <img className='location' src="images/location.png" alt=""/>
-                                </div>
-                            </Marker>
-                })}
                 { selectedOffice ? (
                     <Popup
                         latitude={parseInt(selectedOffice.latitude)}

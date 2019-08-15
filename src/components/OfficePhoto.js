@@ -2,8 +2,7 @@ import React from 'react';
 import { getFirstLetter } from "../Utills/Utility";
 
 
-const officePhoto = (props) => {
-    const { name, photo } = props
+const officePhoto = ({name, photo}) => {
     return (
         <div className='office-photo'>
             <div className="img-container">

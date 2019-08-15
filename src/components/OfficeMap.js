@@ -3,7 +3,7 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { getFirstLetter } from "../Utills/Utility";
 
 
-const OfficeMap = (props) => {
+const OfficeMap = ({coordinates}) => {
     const [ viewport, setViewport ] = useState({
         width:'100vw',
         height:'85vh',
@@ -20,7 +20,7 @@ const OfficeMap = (props) => {
                 mapStyle="mapbox://styles/tjovan/cjyybvxlx07861doe1u3mbazm"
                 mapboxApiAccessToken={"pk.eyJ1IjoidGpvdmFuIiwiYSI6ImNqeXk5eDczYjE5cWozbW1wcDh2NWdxZngifQ.R9w90fEKjDA8JnuEBDHAYA"}>
 
-                { props.coordinates.map((office) => {
+                { coordinates.map((office) => {
                     return <Marker
                             key={office.id}
                             latitude={parseInt(office.latitude)}
@@ -56,7 +56,6 @@ const OfficeMap = (props) => {
         </div>
     )
 }
-
 
 
 export default OfficeMap

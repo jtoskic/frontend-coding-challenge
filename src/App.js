@@ -6,62 +6,54 @@ import List from './components/List'
 import Grid from './components/Grid'
 import OfficeMap from "./components/OfficeMap";
 
+import { store } from "./store";
+import { showOffices } from "./actions";
+import { connect } from "react-redux";
 
 class App extends Component {
   state = {
-      offices:[],
       loading:true,
       index:0
   }
 
   render() {
+      let showOffices = (
+          <img className='loading' src="https://media.giphy.com/media/sSgvbe1m3n93G/giphy.gif" alt="loading"/>
+      )
+
+      if(!this.state.loading && this.props.offices !== undefined) {
+          showOffices = (
+              <Tabs onSelect={index => this.isActive(index)}>
+                  <header className='header'>
+                      <div className="headline">
+                          <h2>Offices</h2>
+                      </div>
+
+                      <TabList className='navigation'>
+                          <Tab style={this.state.index === 0 ? styles.active : styles.notActive}>List</Tab>
+                          <Tab style={this.state.index === 1 ? styles.active : styles.notActive}>Grid</Tab>
+                          <Tab style={this.state.index === 2 ? styles.active : styles.notActive}>Map</Tab>
+                      </TabList>
+                  </header>
+
+                  <TabPanel>
+                      <List offices={this.props.offices}/>
+                  </TabPanel>
+
+                  <TabPanel>
+                      <Grid offices={this.props.offices}/>
+                  </TabPanel>
+
+                  <TabPanel className='map-container'>
+                      <OfficeMap coordinates={this.props.offices}/>
+                  </TabPanel>
+
+              </Tabs>
+          )
+      }
     return (
         <div className='app'>
-            { this.state.loading ? <img
-                    className='loading'
-                    src="https://media.giphy.com/media/sSgvbe1m3n93G/giphy.gif"
-                    alt="loading"/>
-            :
-                <Tabs onSelect={index => this.isActive(index)}>
-                    <header className='header'>
-                        <div className="headline">
-                            <h2>Offices</h2>
-                        </div>
-
-                        <TabList className='navigation'>
-                            <Tab style={this.state.index === 0 ? styles.active : styles.notActive}>List</Tab>
-                            <Tab style={this.state.index === 1 ? styles.active : styles.notActive}>Grid</Tab>
-                            <Tab style={this.state.index === 2 ? styles.active : styles.notActive}>Map</Tab>
-                        </TabList>
-                    </header>
-
-                    <TabPanel className='list-container'>
-                        {this.state.offices.map((office) => {
-                            return <List
-                                key={office.id}
-                                name={office.name}
-                                description={office.description.slice(0, 150)}
-                                photo={office.photo}
-                            />
-                        })}
-                    </TabPanel>
-
-                    <TabPanel className='grid-container'>
-                        {this.state.offices.map((office) => {
-                            return <Grid
-                                key={office.id}
-                                name={office.name}
-                                description={office.description.slice(0, 150)}
-                                photo={office.photo}
-                            />
-                        })}
-                    </TabPanel>
-
-                    <TabPanel className='map-container'>
-                        <OfficeMap coordinates={this.state.offices}/>
-                    </TabPanel>
-                </Tabs>
-            }
+            { showOffices }
         </div>
     )
   }
@@ -70,12 +62,13 @@ class App extends Component {
       this.getData()
   }
 
-  getData = () => {
+
+    getData = () => {
       axios.get('https://itk-exam-api.herokuapp.com/api/offices')
           .then((response) => {
               if(response.status === 200 || response.status === 201) {
-                  this.setState({offices:response.data})
                   this.setState({loading:false})
+                  store.dispatch(showOffices(response.data))
               }
           })
           .catch((error) => {
@@ -86,10 +79,6 @@ class App extends Component {
   isActive = (index) => {
       this.setState({index:index})
   }
-
-//   ab = () => {
-//       this.state.offices
-//   }
 }
 
 const styles = {
@@ -104,5 +93,10 @@ const styles = {
 }
 
 
+const mapStateToProps = (state) => ({
+    ...state
+})
 
-export default App;
+
+
+export default connect(mapStateToProps)(App);

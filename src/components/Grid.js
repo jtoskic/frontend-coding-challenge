@@ -1,25 +1,31 @@
 import React from 'react';
 import OfficePhoto from './OfficePhoto'
 
-
-const Grid = (props) => {
-    const { name, description, photo } = props
+const Grid = ({offices}) => {
     return (
-        <div className='grid'>
-            <OfficePhoto
-                name={name}
-                photo={photo}/>
-            ​
-            <div className="name">
-                <h3>{name}</h3>
-            </div>
-            ​
-            <div className="info">
-                <p>{description}</p>
-            </div>
+        <div className='grid-container'>
+            {
+                offices.map((office) => {
+                    return (
+                        <div className='grid' key={office.id}>
+                            <OfficePhoto
+                                key={office.id}
+                                name={office.name}
+                                photo={office.photo}/>
+                            ​
+                            <div className="name">
+                                <h3>{office.name}</h3>
+                            </div>
+                            ​
+                            <div className="info">
+                                <p>{office.description.slice(0, 150)}</p>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }
-
 
 export default Grid

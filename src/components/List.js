@@ -1,23 +1,27 @@
 import React from 'react';
 import OfficePhoto from "./OfficePhoto.js";
 
-
-const List = (props) => {
-    const { name, description, photo } = props
+const List = ({offices}) => {
     return (
-        <div className='list'>
+        <div className='list-container'>
+            {
+                offices.map((office) => {
+                    return (
+                        <div className='list' key={office.id}>
+                            <OfficePhoto
+                                name={office.name}
+                                photo={office.photo}/>
 
-            <OfficePhoto
-                name={name}
-                photo={photo}/>
-
-            <div className="list-content">
-                <h3 className='name'>{name}</h3>
-                <p className='desc'>{description}</p>
-            </div>
+                            <div className="list-content">
+                                <h3 className='name'>{office.name}</h3>
+                                <p className='desc'>{office.description}</p>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }
-
 
 export default List

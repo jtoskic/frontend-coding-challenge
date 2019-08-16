@@ -1,49 +1,51 @@
-import React, { useState } from 'react';
-import ReactMapGL, { Popup } from 'react-map-gl';
-import { getFirstLetter } from "../Utills/Utility";
+import React, { Component } from 'react';
+import ReactMapGL, { FullscreenControl, NavigationControl } from 'react-map-gl';
 import OfficeMarker from "./OfficeMarker";
+import OfficeMapPopup from './OfficeMapPopup'
 
 
-const OfficeMap = ({coordinates}) => {
-    const [ viewport, setViewport ] = useState({
-        width:'100vw',
-        height:'85vh',
-        zoom:1
-    })
+const mapStyle = "mapbox://styles/mapbox/dark-v9"
 
-    const [ selectedOffice, setSelectedOffice ] = useState(null)
+class OfficeMap extends Component {
+    state = {
+        viewport: {
+            zoom:2,
+            bearing: 0,
+            pitch: 0
+        }
+    }
 
-    return (
-        <div className='office-map'>
-            <ReactMapGL
-                {...viewport}
-                onViewportChange={viewport => {setViewport(viewport)}}
-                mapStyle="mapbox://styles/tjovan/cjyybvxlx07861doe1u3mbazm"
-                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
+    updateViewport = viewport => {
+        this.setState({viewport})
+    }
 
-                <OfficeMarker coordinates={coordinates} setSelectedOffice={setSelectedOffice}/>
+    render() {
+        const { viewport } = this.state
+        return (
+            <div className='office-map'>
+                <ReactMapGL
+                    {...viewport}
+                    width="100vw"
+                    height="65vw"
+                    onViewportChange={this.updateViewport}
+                    mapStyle={mapStyle}
+                    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
 
-                { selectedOffice ? (
-                    <Popup
-                        latitude={parseInt(selectedOffice.latitude)}
-                        longitude={parseInt(selectedOffice.longitude)}
-                        onClose={() => {
-                            setSelectedOffice(null)
-                        }}>
-                        <div className='popup-container'>
-                            <h3>{selectedOffice.name}</h3>
-                            { selectedOffice.photo ?
-                                <img className='office-img' src={selectedOffice.photo} alt='#'/>
-                                :
-                                <div className='no-photo'>{getFirstLetter(selectedOffice.name)}</div> }
-                        </div>
-                    </Popup>
-                ) :
-                    null
-                }
-            </ReactMapGL>
-        </div>
-    )
+                    <OfficeMarker coordinates={this.props.coordinates}/>
+
+                    <OfficeMapPopup/>
+
+                    <div className="fullscreen-control-style ">
+                        <FullscreenControl />
+                    </div>
+                    <div className="nav-style">
+                        <NavigationControl />
+                    </div>
+
+                </ReactMapGL>
+            </div>
+        )
+    }
 }
 
 

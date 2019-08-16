@@ -1,8 +1,14 @@
 
 export default (state = {}, action) => {
-    if(action.type === 'SHOW_OFFICES' ) {
-        return {...state, offices:action.payload}
+    switch(action.type) {
+        case 'SHOW_OFFICES':
+            return {...state, offices:action.payload}
+
+        case 'SHOW_POPUP':
+            return {...state, showSelectedOffice:action.payload}
+        default: return state
     }
-    return state
 }
+
+
 

@@ -5,3 +5,10 @@ export const showOffices = (offices) => {
         payload:offices
     }
 }
+
+export const showPopup = (showSelectedOffice) => {
+    return {
+        type:'SHOW_POPUP',
+        payload:showSelectedOffice
+    }
+}

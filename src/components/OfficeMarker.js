@@ -1,7 +1,9 @@
 import React from 'react'
 import { Marker } from 'react-map-gl';
+import { store } from "../store";
+import { showPopup } from "../actions";
 
-const OfficeMarker = ({coordinates, setSelectedOffice}) => {
+const OfficeMarker = ({coordinates}) => {
     return (
         <div className='marker-container'>
             { coordinates.map((office) => {
@@ -12,7 +14,7 @@ const OfficeMarker = ({coordinates, setSelectedOffice}) => {
 
                     <div onClick={(e) => {
                         e.preventDefault()
-                        setSelectedOffice(office)
+                        store.dispatch(showPopup(office))
                     }}>
                         <img className='location' src="images/location.png" alt=""/>
                     </div>

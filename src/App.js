@@ -17,11 +17,15 @@ class App extends Component {
   }
 
   render() {
+
+      const { loading, index } = this.state
+      const { offices } = this.props
+
       let showOffices = (
           <img className='loading' src="https://media.giphy.com/media/sSgvbe1m3n93G/giphy.gif" alt="loading"/>
       )
 
-      if(!this.state.loading && this.props.offices !== undefined) {
+      if(!loading && offices !== undefined) {
           showOffices = (
               <Tabs onSelect={index => this.isActive(index)}>
                   <header className='header'>
@@ -30,22 +34,22 @@ class App extends Component {
                       </div>
 
                       <TabList className='navigation'>
-                          <Tab style={this.state.index === 0 ? styles.active : styles.notActive}>List</Tab>
-                          <Tab style={this.state.index === 1 ? styles.active : styles.notActive}>Grid</Tab>
-                          <Tab style={this.state.index === 2 ? styles.active : styles.notActive}>Map</Tab>
+                          <Tab style={index === 0 ? styles.active : styles.notActive}>List</Tab>
+                          <Tab style={index === 1 ? styles.active : styles.notActive}>Grid</Tab>
+                          <Tab style={index === 2 ? styles.active : styles.notActive}>Map</Tab>
                       </TabList>
                   </header>
 
                   <TabPanel>
-                      <List offices={this.props.offices}/>
+                      <List offices={offices}/>
                   </TabPanel>
 
                   <TabPanel>
-                      <Grid offices={this.props.offices}/>
+                      <Grid offices={offices}/>
                   </TabPanel>
 
                   <TabPanel className='map-container'>
-                      <OfficeMap coordinates={this.props.offices}/>
+                      <OfficeMap coordinates={offices}/>
                   </TabPanel>
 
               </Tabs>
@@ -61,7 +65,6 @@ class App extends Component {
   componentDidMount() {
       this.getData()
   }
-
 
     getData = () => {
       axios.get('https://itk-exam-api.herokuapp.com/api/offices')

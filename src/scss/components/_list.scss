@@ -22,6 +22,10 @@
         margin-bottom:0.15rem;
       }
       .desc {
+        width:15rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         color:$darkGreen;
       }
     }

@@ -10,14 +10,17 @@ import { store } from "./store";
 import { showOffices } from "./actions";
 import { connect } from "react-redux";
 
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+
+
+
 class App extends Component {
   state = {
       loading:true,
-      index:0
+      index:0,
   }
 
   render() {
-
       const { loading, index } = this.state
       const { offices } = this.props
 
@@ -34,11 +37,18 @@ class App extends Component {
                       </div>
 
                       <TabList className='navigation'>
-                          <Tab style={index === 0 ? styles.active : styles.notActive}>List</Tab>
-                          <Tab style={index === 1 ? styles.active : styles.notActive}>Grid</Tab>
-                          <Tab style={index === 2 ? styles.active : styles.notActive}>Map</Tab>
+                          <Tab style={index === 0 ? styles.active : styles.notActive}>
+                            List
+                          </Tab>
+                          <Tab style={index === 1 ? styles.active : styles.notActive}>
+                              Grid
+                          </Tab>
+                          <Tab style={index === 2 ? styles.active : styles.notActive}>
+                              Map
+                          </Tab>
                       </TabList>
                   </header>
+
 
                   <TabPanel>
                       <List offices={offices}/>
@@ -51,7 +61,6 @@ class App extends Component {
                   <TabPanel className='map-container'>
                       <OfficeMap coordinates={offices}/>
                   </TabPanel>
-
               </Tabs>
           )
       }

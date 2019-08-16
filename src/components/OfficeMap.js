@@ -9,6 +9,8 @@ const mapStyle = "mapbox://styles/mapbox/dark-v9"
 class OfficeMap extends Component {
     state = {
         viewport: {
+            width:'100vw',
+            height:'100vh',
             zoom:2,
             bearing: 0,
             pitch: 0
@@ -16,6 +18,7 @@ class OfficeMap extends Component {
     }
 
     updateViewport = viewport => {
+        console.log('viewport',viewport)
         this.setState({viewport})
     }
 
@@ -25,8 +28,6 @@ class OfficeMap extends Component {
             <div className='office-map'>
                 <ReactMapGL
                     {...viewport}
-                    width="100vw"
-                    height="65vw"
                     onViewportChange={this.updateViewport}
                     mapStyle={mapStyle}
                     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>

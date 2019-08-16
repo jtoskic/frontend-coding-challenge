@@ -18,7 +18,7 @@ const Grid = ({offices}) => {
                             </div>
                             ​
                             <div className="info">
-                                <p>{office.description.slice(0, 150)}</p>
+                                <p>{office.description}</p>
                             </div>
                         </div>
                     )

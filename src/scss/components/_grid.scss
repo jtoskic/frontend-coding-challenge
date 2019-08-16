@@ -3,7 +3,7 @@
 
 .grid-container {
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
   width:97vw;
   margin:0 auto;
   padding:0.5rem;
@@ -13,7 +13,7 @@
     padding:1rem;
     background:$white;
     border-radius:3px;
-    box-shadow: 0px 13px 45px -21px rgba(0,0,0,0.75);
+    box-shadow: 0 13px 45px -21px rgba(0,0,0,0.75);
     .img-container, .name, .info {
       width:100%;
       @include alignMe(center, center);
@@ -29,7 +29,10 @@
     }
     .info {
       p {
-        width:90%;
+        width:20rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }

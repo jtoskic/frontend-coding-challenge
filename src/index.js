@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import './scss/main.scss';
 import {store} from "./store";
 import { Provider } from 'react-redux'
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 ReactDOM.render(
     <Provider store={store}>

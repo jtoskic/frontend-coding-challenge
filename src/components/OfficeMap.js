@@ -18,7 +18,6 @@ class OfficeMap extends Component {
     }
 
     updateViewport = viewport => {
-        console.log('viewport',viewport)
         this.setState({viewport})
     }
 

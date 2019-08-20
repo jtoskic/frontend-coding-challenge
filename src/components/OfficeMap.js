@@ -35,7 +35,7 @@ class OfficeMap extends Component {
 
                     <OfficeMapPopup/>
 
-                    <div className="fullscreen-control-style ">
+                    <div className="fullscreen-control-style">
                         <FullscreenControl />
                     </div>
                     <div className="nav-style">

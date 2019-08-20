@@ -1,27 +1,25 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
 
 import List from './components/List'
 import Grid from './components/Grid'
-import OfficeMap from "./components/OfficeMap";
+import OfficeMap from "./components/OfficeMap"
 
-import { store } from "./store";
-import { showOffices } from "./actions";
-import { connect } from "react-redux";
-
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { store } from "./store"
+import { showOffices } from "./actions"
+import { connect } from "react-redux"
+import { NavLink, Route } from "react-router-dom"
+import { withRouter } from 'react-router-dom'
 
 
 
 class App extends Component {
   state = {
       loading:true,
-      index:0,
   }
 
   render() {
-      const { loading, index } = this.state
+      const { loading } = this.state
       const { offices } = this.props
 
       let showOffices = (
@@ -30,38 +28,40 @@ class App extends Component {
 
       if(!loading && offices !== undefined) {
           showOffices = (
-              <Tabs onSelect={index => this.isActive(index)}>
+              <div>
                   <header className='header'>
                       <div className="headline">
                           <h2>Offices</h2>
                       </div>
 
-                      <TabList className='navigation'>
-                          <Tab style={index === 0 ? styles.active : styles.notActive}>
-                            List
-                          </Tab>
-                          <Tab style={index === 1 ? styles.active : styles.notActive}>
-                              Grid
-                          </Tab>
-                          <Tab style={index === 2 ? styles.active : styles.notActive}>
-                              Map
-                          </Tab>
-                      </TabList>
+                      <ul className='navigation'>
+                          <li>
+                              <NavLink to='/list' activeStyle={styles.active}>List</NavLink>
+                          </li>
+                          <li>
+                              <NavLink to='/grid' activeStyle={styles.active}>Grid</NavLink>
+                          </li>
+                          <li>
+                              <NavLink to='/map' activeStyle={styles.active}>Map</NavLink>
+                          </li>
+                      </ul>
                   </header>
 
-
-                  <TabPanel>
-                      <List offices={offices}/>
-                  </TabPanel>
-
-                  <TabPanel>
-                      <Grid offices={offices}/>
-                  </TabPanel>
-
-                  <TabPanel className='map-container'>
-                      <OfficeMap coordinates={offices}/>
-                  </TabPanel>
-              </Tabs>
+                  {/*why i'm getting router history as prop when i pass offices to render inline function*/}
+                  {/*why the first render of List component gives offices undefined ???*/}
+                   <Route
+                       path='/list'
+                       render={() => <List offices={offices}/>}
+                   />
+                   <Route
+                       path='/grid'
+                       render={() => <Grid offices={offices}/>}
+                       />
+                   <Route
+                       path='/map'
+                       render={() => <OfficeMap coordinates={offices}/>}
+                       />
+              </div>
           )
       }
     return (
@@ -88,19 +88,12 @@ class App extends Component {
           })
   }
 
-  isActive = (index) => {
-      this.setState({index:index})
-  }
 }
 
 const styles = {
     active: {
         borderBottom:'1.5px solid #ffff4d',
         color:'#fff'
-    },
-    notActive: {
-        borderBottom:'1.5px solid transparent',
-        color:'#a6dce8'
     }
 }
 
@@ -110,5 +103,5 @@ const mapStateToProps = (state) => ({
 })
 
 
+export default withRouter(connect(mapStateToProps)(App))
 
-export default connect(mapStateToProps)(App);

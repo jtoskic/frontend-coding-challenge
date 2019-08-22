@@ -47,8 +47,6 @@ class App extends Component {
                       </ul>
                   </header>
 
-                  {/*why i'm getting router history as prop when i pass offices to render inline function*/}
-                  {/*why the first render of List component gives offices undefined ???*/}
                    <Route
                        path='/list'
                        render={() => <List offices={offices}/>}
@@ -80,7 +78,17 @@ class App extends Component {
           .then((response) => {
               if(response.status === 200 || response.status === 201) {
                   this.setState({loading:false})
-                  store.dispatch(showOffices(response.data))
+
+                  const offices = []
+
+                  response.data.forEach((el) => {
+                      el.latitude = parseFloat(el.latitude)
+                      el.longitude = parseFloat(el.longitude)
+
+                      offices.push({...el})
+                  })
+                  store.dispatch(showOffices(offices))
+
               }
           })
           .catch((error) => {

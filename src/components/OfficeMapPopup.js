@@ -11,8 +11,8 @@ const OfficeMapPopup = () => {
         <div className='popup-container'>
             { selectedOffice ? (
                     <Popup
-                        latitude={parseInt(selectedOffice.latitude)}
-                        longitude={parseInt(selectedOffice.longitude)}
+                        latitude={selectedOffice.latitude}
+                        longitude={selectedOffice.longitude}
                         onClose={() => {
                             store.dispatch(showPopup(null))
                         }}>

@@ -9,8 +9,8 @@ const OfficeMarker = ({coordinates}) => {
             { coordinates.map((office) => {
                 return <Marker
                     key={office.id}
-                    latitude={parseInt(office.latitude)}
-                    longitude={parseInt(office.longitude)}>
+                    latitude={office.latitude}
+                    longitude={office.longitude}>
 
                     <div onClick={(e) => {
                         e.preventDefault()

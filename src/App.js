@@ -57,7 +57,7 @@ class App extends Component {
                        />
                    <Route
                        path='/map'
-                       render={() => <OfficeMap coordinates={offices}/>}
+                       render={() => <OfficeMap offices={offices}/>}
                        />
               </div>
           )
@@ -76,20 +76,16 @@ class App extends Component {
     getData = () => {
       axios.get('https://itk-exam-api.herokuapp.com/api/offices')
           .then((response) => {
-              if(response.status === 200 || response.status === 201) {
-                  this.setState({loading:false})
+              this.setState({loading:false})
+              const offices = []
 
-                  const offices = []
+              response.data.forEach((el) => {
+                  el.latitude = parseFloat(el.latitude)
+                  el.longitude = parseFloat(el.longitude)
 
-                  response.data.forEach((el) => {
-                      el.latitude = parseFloat(el.latitude)
-                      el.longitude = parseFloat(el.longitude)
-
-                      offices.push({...el})
-                  })
-                  store.dispatch(showOffices(offices))
-
-              }
+                  offices.push({...el})
+              })
+              store.dispatch(showOffices(offices))
           })
           .catch((error) => {
               console.log(error)

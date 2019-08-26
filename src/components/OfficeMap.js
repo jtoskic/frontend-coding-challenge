@@ -31,7 +31,7 @@ class OfficeMap extends Component {
                     mapStyle={mapStyle}
                     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
 
-                    <OfficeMarker coordinates={this.props.coordinates}/>
+                    <OfficeMarker coordinates={this.props.offices}/>
 
                     <OfficeMapPopup/>
 

@@ -1,6 +1,10 @@
 @import '../mixins';
 @import '../variables';
 
+.active {
+  border-bottom:1px solid #ffff4d;
+  color:$white;
+}
 .header {
   display:grid;
   grid-template-columns: 0.35fr 0.3fr;

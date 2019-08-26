@@ -36,19 +36,20 @@ class App extends Component {
 
                       <ul className='navigation'>
                           <li>
-                              <NavLink to='/list' activeStyle={styles.active}>List</NavLink>
+                              <NavLink exact to='/' activeClassName='active'>List</NavLink>
                           </li>
                           <li>
-                              <NavLink to='/grid' activeStyle={styles.active}>Grid</NavLink>
+                              <NavLink to='/grid' activeClassName='active'>Grid</NavLink>
                           </li>
                           <li>
-                              <NavLink to='/map' activeStyle={styles.active}>Map</NavLink>
+                              <NavLink to='/map' activeClassName='active'>Map</NavLink>
                           </li>
                       </ul>
                   </header>
 
                    <Route
-                       path='/list'
+                       path='/'
+                       exact
                        render={() => <List offices={offices}/>}
                    />
                    <Route
@@ -91,14 +92,6 @@ class App extends Component {
               console.log(error)
           })
   }
-
-}
-
-const styles = {
-    active: {
-        borderBottom:'1.5px solid #ffff4d',
-        color:'#fff'
-    }
 }
 
 

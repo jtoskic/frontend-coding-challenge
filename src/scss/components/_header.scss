@@ -2,9 +2,11 @@
 @import '../variables';
 
 .active {
-  border-bottom:1px solid #ffff4d;
+  border:1.5px solid transparent;
+  border-bottom:1.5px solid #ffff4d;
   color:$white;
 }
+
 .header {
   display:grid;
   grid-template-columns: 0.35fr 0.3fr;
@@ -29,10 +31,13 @@
     li {
       @include alignMe(center, center);
       width:30%;
-      height:5rem;
+      height:4.5rem;
       list-style-type:none;
       cursor:pointer;
       a {
+        @include alignMe(center, center);
+        width:100%;
+        height:100%;
         text-decoration:none;
         color:$darkWhite;
       }

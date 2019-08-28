@@ -44,8 +44,11 @@ class App extends Component {
                           <li>
                               <NavLink to='/map' activeClassName='active'>Map</NavLink>
                           </li>
-                      </ul>
+                      </ul>             
                   </header>
+
+                  {/*why i'm getting router history as prop when i pass offices to render inline function*/}
+                  {/*why the first render of List component gives offices undefined ???*/}
 
                    <Route
                        path='/'

@@ -11,3 +11,7 @@ html, body, p, h1, h2, h3 {
   transform:translate(-50%, 0);
   left:50%;
 }
+
+.wrapper {
+  min-height:55rem; // make sure that there is a scroll bar on every page, remove if necessary
+}

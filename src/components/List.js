@@ -3,7 +3,7 @@ import OfficePhoto from "./OfficePhoto.js";
 
 const List = ({offices}) => {
     return (
-        <div className='list-container'>
+        <div className='list-container wrapper'>
             {
                 offices.map((office) => {
                     return (

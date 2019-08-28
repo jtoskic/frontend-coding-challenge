@@ -24,7 +24,7 @@ class OfficeMap extends Component {
     render() {
         const { viewport } = this.state
         return (
-            <div className='office-map'>
+            <div className='office-map wrapper'>
                 <ReactMapGL
                     {...viewport}
                     onViewportChange={this.updateViewport}

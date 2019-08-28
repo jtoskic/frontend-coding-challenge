@@ -3,7 +3,7 @@ import OfficePhoto from './OfficePhoto'
 
 const Grid = ({offices}) => {
     return (
-        <div className='grid-container'>
+        <div className='grid-container wrapper'>
             {
                 offices.map((office) => {
                     return (

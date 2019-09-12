@@ -1,17 +1,15 @@
 html, body, p, h1, h2, h3 {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family:'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
-
 .loading {
-  width:25rem;
-  position:absolute;
-  transform:translate(-50%, 0);
-  left:50%;
+  width: 25rem;
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
 }
-
 .wrapper {
-  min-height:55rem; // make sure that there is a scroll bar on every page, remove if necessary
+  min-height: 55rem;
 }

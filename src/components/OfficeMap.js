@@ -3,7 +3,6 @@ import ReactMapGL, { FullscreenControl, NavigationControl } from 'react-map-gl';
 import OfficeMarker from "./OfficeMarker";
 import OfficeMapPopup from './OfficeMapPopup'
 
-
 const mapStyle = "mapbox://styles/mapbox/dark-v9"
 
 class OfficeMap extends Component {
@@ -47,6 +46,5 @@ class OfficeMap extends Component {
         )
     }
 }
-
 
 export default OfficeMap

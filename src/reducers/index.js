@@ -1,4 +1,3 @@
-
 export default (state = {}, action) => {
     switch(action.type) {
         case 'SHOW_OFFICES':
@@ -9,6 +8,3 @@ export default (state = {}, action) => {
         default: return state
     }
 }
-
-
-

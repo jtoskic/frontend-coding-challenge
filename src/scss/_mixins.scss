@@ -1,5 +1,5 @@
 @mixin alignMe($x, $y) {
-  display:flex;
+  display: flex;
   justify-content: $x;
   align-items: $y;
 }

@@ -1,35 +1,34 @@
 @import '../variables';
 @import '../mixins';
-
 .grid-container {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  width:97vw;
-  margin:0 auto;
-  padding:0.5rem;
-  background:$blue;
+  width: 97vw;
+  margin: 0 auto;
+  padding: 0.5rem;
+  background: $blue;
   .grid {
-    margin:0.5rem;
-    padding:1rem;
-    background:$white;
-    border-radius:3px;
+    margin: 0.5rem;
+    padding: 1rem;
+    background: $white;
+    border-radius: 3px;
     box-shadow: 0 13px 45px -21px rgba(0,0,0,0.75);
     .img-container, .name, .info {
-      width:100%;
+      width: 100%;
       @include alignMe(center, center);
     }
     .img-container {
-      margin-bottom:0.3rem;
+      margin-bottom: 0.3rem;
     }
     .name, .info {
-      margin-bottom:0.8rem;
+      margin-bottom: 0.8rem;
       h3 {
-        color:$darkRed;
+        color: $darkRed;
       }
     }
     .info {
       p {
-        width:20rem;
+        width: 20rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

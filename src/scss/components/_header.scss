@@ -1,57 +1,55 @@
 @import '../mixins';
 @import '../variables';
-
 .active {
-  border:1.5px solid transparent;
-  border-bottom:1.5px solid #ffff4d;
-  color:$white;
+  border: 1.5px solid transparent;
+  border-bottom: 1.5px solid #ffff4d;
+  color: $white;
 }
-
 .header {
-  display:grid;
+  display: grid;
   grid-template-columns: 0.35fr 0.3fr;
   grid-template-areas: 'headline navigation';
-  margin-bottom:1rem;
-  background:$blue;
+  margin-bottom: 1rem;
+  background: $blue;
   .headline {
-    display:flex;
+    display: flex;
     align-items: center;
-    height:5rem;
-    grid-area:headline;
-    padding-left:0.5rem;
+    height: 5rem;
+    grid-area: headline;
+    padding-left: 0.5rem;
     h2 {
-      color:$white;
+      color: $white;
     }
   }
   .navigation {
-    height:3rem;
-    padding:0;
-    grid-area:navigation;
+    height: 3rem;
+    padding: 0;
+    grid-area: navigation;
     @include alignMe(space-around, center);
     li {
       @include alignMe(center, center);
-      width:30%;
-      height:4.5rem;
-      list-style-type:none;
-      cursor:pointer;
+      width: 30%;
+      height: 4.5rem;
+      list-style-type: none;
+      cursor: pointer;
       a {
         @include alignMe(center, center);
-        width:100%;
-        height:100%;
-        text-decoration:none;
-        color:$darkWhite;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: $darkWhite;
       }
     }
   }
   & {
-    @media (max-width:700px) {
+    @media (max-width: 700px) {
       grid-template-areas:
               'headline'
               'navigation';
-      grid-template-columns:1fr;
+      grid-template-columns: 1fr;
       .headline {
-        align-items:center;
-        justify-content:center;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

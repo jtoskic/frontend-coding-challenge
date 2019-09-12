@@ -1,32 +1,31 @@
 @import '../variables';
 @import '../mixins';
-
 .list-container {
-  width:97vw;
-  margin:0 auto;
-  padding-left:0.5rem;
-  background-color:$blue;
+  width: 97vw;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+  background-color: $blue;
   .list {
-    display:grid;
+    display: grid;
     grid-template-columns: 0.1fr 1fr;
     &:not(:last-child) .list-content {
-      border-bottom:1px solid $darkGreen;
+      border-bottom: 1px solid $darkGreen;
     }
     .list-content {
       @include alignMe(center, flex-start);
-      flex-direction:column;
-      margin-left:1rem;
-      padding:1.25rem 1.25rem 1.25rem 0;
+      flex-direction: column;
+      margin-left: 1rem;
+      padding: 1.25rem 1.25rem 1.25rem 0;
       .name {
-        color:$veryLightBlue;
-        margin-bottom:0.15rem;
+        color: $veryLightBlue;
+        margin-bottom: 0.15rem;
       }
       .desc {
-        width:15rem;
+        width: 15rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color:$darkGreen;
+        color: $darkGreen;
       }
     }
   }

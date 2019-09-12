@@ -1,7 +1,6 @@
 import React from 'react';
 import { getFirstLetter } from "../Utills/Utility";
 
-
 const officePhoto = ({name, photo}) => {
     return (
         <div className='office-photo'>
@@ -13,6 +12,5 @@ const officePhoto = ({name, photo}) => {
         </div>
     )
 }
-
 
 export default officePhoto

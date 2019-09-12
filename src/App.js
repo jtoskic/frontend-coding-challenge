@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
 import List from './components/List'
 import Grid from './components/Grid'
 import OfficeMap from "./components/OfficeMap"
-
 import { store } from "./store"
 import { showOffices } from "./actions"
 import { connect } from "react-redux"
 import { NavLink, Route } from "react-router-dom"
 import { withRouter } from 'react-router-dom'
-
-
 
 class App extends Component {
   state = {
@@ -46,9 +42,6 @@ class App extends Component {
                           </li>
                       </ul>             
                   </header>
-
-                  {/*why i'm getting router history as prop when i pass offices to render inline function*/}
-                  {/*why the first render of List component gives offices undefined ???*/}
 
                    <Route
                        path='/'
@@ -97,11 +90,8 @@ class App extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => ({
     ...state
 })
 
-
 export default withRouter(connect(mapStateToProps)(App))
-

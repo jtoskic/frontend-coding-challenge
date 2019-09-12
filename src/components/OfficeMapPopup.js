@@ -4,7 +4,6 @@ import { getFirstLetter } from "../Utills/Utility";
 import { store } from "../store";
 import { showPopup } from "../actions";
 
-
 const OfficeMapPopup = () => {
     const selectedOffice = store.getState().showSelectedOffice
     return  (
